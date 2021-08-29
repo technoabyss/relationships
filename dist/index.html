@@ -9,14 +9,15 @@
   </head>
   <body>
     <div id="settings">
+      <header><a href="https://github.com/technoabyss/relationships">relationships <span id="version"></span></a></header>
       <textarea id="import" spellcheck="false" placeholder="Paste your import here"></textarea>
       <button id="import_btn">Import</button>
       <button id="export">Export to clipboard</button>
       <button id="clear">Clear</button>
       <ul id="pairs">
         <li class="pair">
-          <input type="text" class="a" maxlength="25">⇌
-          <input type="text" class="b" maxlength="25">
+          <input type="text" class="a" maxlength="25" tabindex="1">⇌
+          <input type="text" class="b" maxlength="25" tabindex="1">
           <button class="remove">╳</button>
         </li>
       </ul>

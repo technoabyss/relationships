@@ -6,7 +6,18 @@ body
   color: #aaa
   font-family: Consolas, Courier New, Courier, monospace
   margin: 0
-  overflow: hidden
+
+header
+  text-align: center
+
+a, a:visited
+  color: #9ea810
+
+#settings
+  width: 400px
+
+#graph
+  flex-grow: 1
 
 #pairs
   padding-inline-start: 0
@@ -35,12 +46,15 @@ body
 
 #import
   resize: none
-  overflow: hidden
+  overflow-x: hidden
+  overflow-y: auto
+  height: 4em
   width: 100%
   background: none
   color: #aaa
   border-bottom: $border
-  margin-bottom: 1em
+  border-top: $border
+  margin: 1em 0
 
 #settings > button
   background: none

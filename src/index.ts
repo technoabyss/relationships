@@ -2,6 +2,8 @@ import ForceGraph3D from "3d-force-graph";
 import SpriteText from "three-spritetext";
 import { Optional } from "typescript-optional";
 
+import { version } from "../package.json";
+
 import "normalize.css";
 import "./style.sass";
 
@@ -9,6 +11,10 @@ interface FNode { id: string }
 
 const throw_missing_elem = (elem: string): (() => Error) =>
   () => new Error(`The element ${elem} wasn't found`);
+
+Optional.ofNullable(document.getElementById("version"))
+  .orElseThrow(throw_missing_elem("#version"))
+  .textContent = version;
 
 // Clear previous values
 // This is necessary because of browser autofill
@@ -27,7 +33,12 @@ const import_input = Optional.ofNullable(document.getElementById("import"))
 // Clear previous value
 import_input.value = "";
 
+// Need to capture this value before using ForceGraph3D
+const GRAPH_WIDTH = graph_elem.offsetWidth;
+
 const Graph = ForceGraph3D({ controlType: "orbit" })(graph_elem)
+  .width(GRAPH_WIDTH)
+  .height(document.body.clientHeight)
   .nodeThreeObject(node => {
     const sprite = new SpriteText(node.id as string);
     sprite.color = "#ffffff";
