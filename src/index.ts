@@ -10,6 +10,11 @@ interface FNode { id: string }
 const throw_missing_elem = (elem: string): (() => Error) =>
   () => new Error(`The element ${elem} wasn't found`);
 
+// Clear previous values
+// This is necessary because of browser autofill
+(document.querySelectorAll(".pair > input") as NodeListOf<HTMLInputElement>)
+  .forEach(e => e.value = "");
+
 const graph_elem = Optional.ofNullable(document.getElementById("graph"))
   .orElseThrow(throw_missing_elem("#graph")) as HTMLDivElement;
 const pair_list = Optional.ofNullable(document.getElementById("pairs"))
@@ -18,6 +23,9 @@ const pair_ui = Optional.ofNullable(document.getElementsByClassName("pair")[0])
   .orElseThrow(throw_missing_elem(".pair")).cloneNode(true) as HTMLLIElement;
 const import_input = Optional.ofNullable(document.getElementById("import"))
   .orElseThrow(throw_missing_elem("#input")) as HTMLTextAreaElement;
+
+// Clear previous value
+import_input.value = "";
 
 const Graph = ForceGraph3D({ controlType: "orbit" })(graph_elem)
   .nodeThreeObject(node => {
@@ -33,12 +41,6 @@ const Graph = ForceGraph3D({ controlType: "orbit" })(graph_elem)
   .enableNodeDrag(true)
   .enableNavigationControls(true)
   .showNavInfo(true);
-
-// Clear previous values
-// This is necessary because of browser autofill
-(document.querySelectorAll(".pair > input") as NodeListOf<HTMLInputElement>)
-  .forEach(e => e.value = "");
-import_input.value = "";
 
 let pairs_export = "";
 
