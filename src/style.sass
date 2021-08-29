@@ -1,0 +1,50 @@
+$border: 1px dotted #aaa
+
+body
+  display: flex
+  background: #000011
+  color: #aaa
+  font-family: Consolas, Courier New, Courier, monospace
+  margin: 0
+  overflow: hidden
+
+#pairs
+  padding-inline-start: 0
+  border-top: $border
+  margin: 1em 0
+  padding-top: 1em
+
+#import, .pair input
+  outline: none
+  border: none
+
+.pair
+  list-style: none
+  display: flex
+  input, button
+    background: transparent
+    color: #aaa
+  input
+    border-bottom: $border
+  .remove
+    border: none
+    cursor: pointer
+
+#graph
+  border-left: $border
+
+#import
+  resize: none
+  overflow: hidden
+  width: 100%
+  background: none
+  color: #aaa
+  border-bottom: $border
+  margin-bottom: 1em
+
+#import_btn, #export
+  background: none
+  border: 1px solid #aaa
+  color: #aaa
+  border-radius: 0
+  cursor: pointer
