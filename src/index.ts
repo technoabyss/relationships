@@ -155,7 +155,10 @@ Optional.ofNullable(document.getElementById("import_btn"))
     });
 
     // Add an empty pair
-    pair_list.appendChild(pair_ui.cloneNode(true));
+    const new_pair: HTMLLIElement = pair_list.appendChild(pair_ui.cloneNode(true)) as HTMLLIElement;
+
+    // And set up event listeners for it
+    listen_inputs(new_pair);
 
     // Empty import textarea
     import_input.value = "";
