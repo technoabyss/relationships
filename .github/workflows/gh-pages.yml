@@ -1,11 +1,11 @@
-name:
+name: Github Pages
 on: [push]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - run: npm i
-      - run: webpack
+      - run: webpack --mode="production"
       - uses: JamesIves/github-pages-deploy-action@12a916dfb718ab8fc2ec3ad7cb731a89d7d23332 # 4.1.5
         with:
           branch: gh-pages
