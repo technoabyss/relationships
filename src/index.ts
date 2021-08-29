@@ -62,8 +62,12 @@ const listen_inputs = (pair: HTMLLIElement) => {
       // Add another pair to the list
       const new_pair: HTMLLIElement = pair_list.appendChild(pair_ui.cloneNode(true)) as HTMLLIElement;
 
-      // Set its delete button to delete
-      new_pair.children[2]
+      // And set up event listeners for it
+      listen_inputs(new_pair);
+    }));
+
+  // Set the X button to delete the entry
+  pair.children[2]
         .addEventListener("click", () => {
           // Find out what # pair we're in,
           let
@@ -74,18 +78,16 @@ const listen_inputs = (pair: HTMLLIElement) => {
           // Don't do it if this is the last one and it's empty
           if (
             pair_list.children.length === i &&
-            (new_pair.children[0] as HTMLInputElement).value.length === 0 &&
-            (new_pair.children[1] as HTMLInputElement).value.length === 0
+        (pair.children[0] as HTMLInputElement).value.length === 0 &&
+        (pair.children[1] as HTMLInputElement).value.length === 0
           ) return;
 
           // Do it
-          pair_list.removeChild(new_pair);
+      pair_list.removeChild(pair);
         });
-    }));
 };
 
 // Set the initial pair to listen
-// FIXME why does this not work
 listen_inputs(pair_list.children[0] as HTMLLIElement);
 
 const get_pairs = (): string[][] => {
