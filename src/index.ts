@@ -70,23 +70,23 @@ const listen_inputs = (pair: HTMLLIElement) => {
 
   // Set the X button to delete the entry
   pair.children[2]
-        .addEventListener("click", () => {
-          // Find out what # pair we're in,
-          let
-            i = 1,
-            child = pair;
-          while ((child = (child.previousElementSibling as HTMLLIElement)) !== null) i++;
+    .addEventListener("click", () => {
+      // Find out what # pair we're in,
+      let
+        i = 1,
+        child = pair;
+      while ((child = (child.previousElementSibling as HTMLLIElement)) !== null) i++;
 
-          // Don't do it if this is the last one and it's empty
-          if (
-            pair_list.children.length === i &&
+      // Don't do it if this is the last one and it's empty
+      if (
+        pair_list.children.length === i &&
         (pair.children[0] as HTMLInputElement).value.length === 0 &&
         (pair.children[1] as HTMLInputElement).value.length === 0
-          ) return;
+      ) return;
 
-          // Do it
+      // Do it
       pair_list.removeChild(pair);
-        });
+    });
 };
 
 // Set the initial pair to listen
@@ -164,4 +164,17 @@ Optional.ofNullable(document.getElementById("import_btn"))
 
     // Empty import textarea
     import_input.value = "";
+  });
+
+Optional.ofNullable(document.getElementById("clear"))
+  .orElseThrow(throw_missing_elem("clear"))
+  .addEventListener("click", () => {
+    // Remove all children
+    pair_list.textContent = "";
+
+    // Add an empty pair
+    const new_pair: HTMLLIElement = pair_list.appendChild(pair_ui.cloneNode(true)) as HTMLLIElement;
+
+    // And set up event listeners for it
+    listen_inputs(new_pair);
   });
