@@ -7,8 +7,20 @@ body
   font-family: Consolas, Courier New, Courier, monospace
   margin: 0
   overflow: hidden
+  min-height: 100vh
+  justify-content: center
+
+#sizewarning
+  display: none
+
+@media (screen and max-width: 800px)
+  #sizewarning
+    display: block
+  #settings, #graph
+    display: none
 
 header
+  margin-top: 1em
   text-align: center
 
 a, a:visited
@@ -37,7 +49,7 @@ a, a:visited
   list-style: none
   display: flex
   input, button
-    width: 175px
+    width: 185px
     background: transparent
     color: #aaa
   input
