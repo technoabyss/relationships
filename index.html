@@ -7,9 +7,10 @@
     <link rel="icon" type="image/png" href="./asset/favicon/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="./asset/favicon/favicon-16x16.png" sizes="16x16">
   </head>
-  <body>
+  <body style="background: #000011; color: #aaa">
+    <noscript>This tool will not work with Javascript disabled. The source is available <a href="https://github.com/technoabyss/relationships" target="_blank">here</a>.</noscript>
     <div id="settings">
-      <header><a href="https://github.com/technoabyss/relationships">relationships <span id="version"></span></a></header>
+      <header><a target="_blank" href="https://github.com/technoabyss/relationships">relationships <span id="version"></span></a></header>
       <textarea id="import" spellcheck="false" placeholder="Paste your import here"></textarea>
       <button id="import_btn">Import</button>
       <button id="export">Export to clipboard</button>
@@ -22,7 +23,7 @@
         </li>
       </ul>
     </div>
-    <div id="graph"></div>
+    <div id="graph"></div><div id="sizewarning">You need a bigger screen (>800px wide) to use this tool, sorry.</div>
     <script type="module" src="bundle.js"></script>
   </body>
 </html>
